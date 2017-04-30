@@ -1,4 +1,4 @@
-service: serverless-webpack-multiple-entries-example
+service: multiple-external
 
 # Add the serverless-webpack plugin
 plugins:
@@ -6,16 +6,26 @@ plugins:
 
 provider:
   name: aws
-  runtime: nodejs4.3
+  runtime: nodejs6.10
+
+# you can overwrite defaults here
+  stage: dev
+  region: eu-west-2
 
 custom:
   webpackIncludeModules: true # enable auto including modules
 
 functions:
-  first:
-    handler: handler.hello
+  hello:
+    handler: hello.hello
     events:
       - http:
           method: GET
-          path: first
+          path: hello
           integration: lambda
+  longLink:
+    handler: longLink.longLink
+    events:
+      - http:
+          method: POST
+          path: longlink
