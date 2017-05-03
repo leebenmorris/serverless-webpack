@@ -36,7 +36,8 @@ async function buildOutput(domainId) {
         title: obj.title,
         articleUrl: obj.href,
         description: obj.description,
-        articleIsFakeNews: obj.isFake,
+        articleIsFakeNews: obj.is_fake,
+        pending: obj.pending,
         timeStamp: obj.post_date,
         organisation: obj.organisation
       }));

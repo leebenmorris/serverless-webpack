@@ -12,6 +12,7 @@ const createArticlesTable = `
     title TEXT,
     description TEXT,
     is_fake BOOLEAN DEFAULT false,
+    pending BOOLEAN DEFAULT true,
     user_id INT,
     domain_id INT,
     post_date DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,

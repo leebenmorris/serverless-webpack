@@ -20,7 +20,8 @@ async function buildOutput(articleId) {
         title: obj.title,
         articleUrl: obj.href,
         description: obj.description,
-        articleIsFakeNews: obj.isFake,
+        articleIsFakeNews: obj.is_fake,
+        pending: obj.pending,
         timeStamp: obj.post_date,
         organisation: obj.organisation
       }));
@@ -31,7 +32,8 @@ async function buildOutput(articleId) {
         title: singleArticle.title,
         articleUrl: singleArticle.href,
         description: singleArticle.description,
-        articleIsFakeNews: singleArticle.isFake,
+        articleIsFakeNews: singleArticle.is_fake,
+        pending: singleArticle.pending,
         timeStamp: singleArticle.post_date,
         organisation: singleArticle.organisation
       };
