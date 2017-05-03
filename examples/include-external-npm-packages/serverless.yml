@@ -1,5 +1,8 @@
 service: multiple-external
 
+package:
+  individually: true
+
 # Add the serverless-webpack plugin
 plugins:
   - serverless-webpack
@@ -16,16 +19,70 @@ custom:
   webpackIncludeModules: true # enable auto including modules
 
 functions:
-  hello:
-    handler: hello.hello
-    events:
-      - http:
-          method: GET
-          path: hello
-          integration: lambda
   longLink:
     handler: longLink.longLink
     events:
       - http:
           method: POST
           path: longlink
+          cors: true
+  getArticlesOrCommentsByArticleId:
+    handler: getArticlesOrCommentsByArticleId.handler
+    events:
+      - http:
+          method: GET
+          path: home
+          cors: true
+      - http:
+          method: GET
+          path: articles/{article_id}
+          cors: true
+    vpc:
+      securityGroupIds:
+        - sg-43c84a2a
+      subnetIds:
+        - subnet-cb56b486
+        - subnet-1f38f364
+  getDomainsOrArticlesByDomainId:
+    handler: getDomainsOrArticlesByDomainId.handler
+    events:
+      - http:
+          method: GET
+          path: getUrlAndScore
+          cors: true
+      - http:
+          method: GET
+          path: domains/{domain_id}
+          cors: true
+    vpc:
+      securityGroupIds:
+        - sg-43c84a2a
+      subnetIds:
+        - subnet-cb56b486
+        - subnet-1f38f364
+  postArticle:
+    handler: postArticle.handler
+    events:
+      - http:
+          method: POST
+          path: articles
+          cors: true
+    vpc:
+      securityGroupIds:
+        - sg-43c84a2a
+      subnetIds:
+        - subnet-cb56b486
+        - subnet-1f38f364
+  postComment:
+    handler: postComment.handler
+    events:
+      - http:
+          method: POST
+          path: comments
+          cors: true
+    vpc:
+      securityGroupIds:
+        - sg-43c84a2a
+      subnetIds:
+        - subnet-cb56b486
+        - subnet-1f38f364

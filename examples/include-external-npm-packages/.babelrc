@@ -1,0 +1,16 @@
+{
+  "plugins": [
+    "transform-runtime",
+    "transform-inline-environment-variables"
+  ],
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "node": 6.10
+        }
+      }
+    ]
+  ]
+}

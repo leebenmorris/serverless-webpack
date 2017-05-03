@@ -1,5 +1,18 @@
-'use strict';
-
-module.exports.hello = function (event, context, cb) {
- cb(null, { message: 'First module', event });
+if (!global._babelPolyfill) {
+   require('babel-polyfill');
 }
+
+export const hello = (event, context, cb) => {
+  const p = new Promise((resolve, reject) => {
+    resolve('success');
+  });
+  p
+    .then(r => cb(null, {
+      message: 'Go Serverless Webpack (Babel) v1.0! Your function executed successfully!',
+      event,
+    }))
+    .catch(e => cb(new Error(e)));
+};
+// module.exports.hello = function (event, context, cb) {
+//   cb(null, { message: 'First module', event });
+// };
