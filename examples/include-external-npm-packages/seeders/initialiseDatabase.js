@@ -12,8 +12,11 @@ async function initDatabase() {
     await db.query(`DROP TABLE IF EXISTS users`);
     pgp.end();
     await require('./createUsersTable')();
+    pgp.end();
     await require('./createDomainsTable')();
+    pgp.end();
     await require('./createArticlesTable')();
+    pgp.end();
     await require('./createCommentsTable')();
     pgp.end();
     return 'database reset';

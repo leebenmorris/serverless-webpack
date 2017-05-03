@@ -73,6 +73,19 @@ functions:
       subnetIds:
         - subnet-cb56b486
         - subnet-1f38f364
+  changeArticleVotes:
+    handler: changeArticleVotes.handler
+    events:
+      - http:
+          method: PUT
+          path: comments
+          cors: true
+    vpc:
+      securityGroupIds:
+        - sg-43c84a2a
+      subnetIds:
+        - subnet-cb56b486
+        - subnet-1f38f364
   postComment:
     handler: postComment.handler
     events:

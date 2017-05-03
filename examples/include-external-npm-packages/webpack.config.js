@@ -4,14 +4,12 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    // hello: './hello.js',
-    longLink: './longLink.js',
-    // gp: './gp.js',
-    // carDB: './carDB',
-    getArticlesOrCommentsByArticleId: './getArticlesOrCommentsByArticleId',
-    getDomainsOrArticlesByDomainId: './getDomainsOrArticlesByDomainId',
-    postArticle: './postArticle',
-    postComment: './postComment'
+    longLink: './ffs_lambda_functions/longLink.js',
+    getArticlesOrCommentsByArticleId: './ffs_lambda_functions/getArticlesOrCommentsByArticleId',
+    getDomainsOrArticlesByDomainId: './ffs_lambda_functions/getDomainsOrArticlesByDomainId',
+    postArticle: './ffs_lambda_functions/postArticle',
+    postComment: './ffs_lambda_functions/postComment',
+    changeArticleVotes: './ffs_lambda_functions/changeArticleVotes'
   },
   target: 'node',
   externals: [nodeExternals()], // exclude external modules

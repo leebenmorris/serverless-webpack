@@ -1,6 +1,4 @@
-if (!global._babelPolyfill) {
-  require('babel-polyfill');
-}
+global._babelPolyfill || require('babel-polyfill');
 
 const request = require("request");
 const url = require("url");

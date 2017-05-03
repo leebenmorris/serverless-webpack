@@ -1,3 +1,5 @@
+global._babelPolyfill || require('babel-polyfill');
+
 const bluebird = require('bluebird');
 const pgp = require('pg-promise')({ promiseLib: bluebird });
 
@@ -20,13 +22,13 @@ const createArticlesTable = `
     FOREIGN KEY (domain_id) REFERENCES domains(id)
   )`;
 const seedArticlesTable = `
-  INSERT INTO articles (href, title, description, is_fake, user_id, domain_id)
+  INSERT INTO articles (href, title, description, user_id, domain_id)
   VALUES 
-    ('www.theguardian.com/article1', 'Article 1', 'Article Text 1', true, 1, 1), 
-    ('www.independent.co.uk/article2', 'Article 2', 'Article Text 2', true, 1, 2), 
-    ('www.telegraph.co.uk/article3', 'Article 3', 'Article Text 3', true, 1, 3), 
-    ('www.bbc.co.uk/article4', 'Article 4', 'Article Text 4', true, 1, 4), 
-    ('www.thetimes.co.uk/article5', 'Article 5', 'Article Text 5', true, 1, 5)`;
+    ('www.theguardian.com/article1', 'Article 1', 'Article Text 1', 1, 1), 
+    ('www.independent.co.uk/article2', 'Article 2', 'Article Text 2', 1, 2), 
+    ('www.telegraph.co.uk/article3', 'Article 3', 'Article Text 3', 1, 3), 
+    ('www.bbc.co.uk/article4', 'Article 4', 'Article Text 4', 1, 4), 
+    ('www.thetimes.co.uk/article5', 'Article 5', 'Article Text 5', 1, 5)`;
 
 async function createArticles() {
   try {
